@@ -98,9 +98,14 @@ class AlienInvasion:
             self.ship.moving_left = True
         elif event.key == pygame.K_UP:
             self.settings.alien_speed += 0.1
+            self.settings.bullet_speed += 0.6
+            self.settings.ship_speed += 0.3
         elif event.key == pygame.K_DOWN:
-            if self.settings.alien_speed > 0.1:
+            if self.settings.alien_speed > 0.1 and self.settings.bullet_speed > 0.6\
+                    and self.settings.ship_speed > 0.3:
                 self.settings.alien_speed -= 0.1
+                self.settings.bullet_speed -= 0.6
+                self.settings.ship_speed -= 0.3
         elif event.key == pygame.K_ESCAPE:
             sys.exit()
         elif event.key == pygame.K_SPACE:
