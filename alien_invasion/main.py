@@ -9,6 +9,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 
+
 class AlienInvasion:
     """общий класс для управления игрой"""
 
@@ -39,7 +40,9 @@ class AlienInvasion:
     def run_game(self):
         """главный игровой цикл"""
 
+        # clock = pygame.time.Clock()  # попытка использовать Clock для решения проблемы с замедлением
         while True:
+            # clock.tick(60)  # попытка использовать Clock для решения проблемы с замедлением
             self._check_events()
 
             if self.stats.game_active:
@@ -93,6 +96,11 @@ class AlienInvasion:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
+        elif event.key == pygame.K_UP:
+            self.settings.alien_speed += 0.1
+        elif event.key == pygame.K_DOWN:
+            if self.settings.alien_speed > 0.1:
+                self.settings.alien_speed -= 0.1
         elif event.key == pygame.K_ESCAPE:
             sys.exit()
         elif event.key == pygame.K_SPACE:
